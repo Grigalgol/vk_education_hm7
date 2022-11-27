@@ -1,3 +1,5 @@
+package servlets;
+
 import dao.CompanyDAO;
 import dao.ProductDAO;
 import entity.Company;
