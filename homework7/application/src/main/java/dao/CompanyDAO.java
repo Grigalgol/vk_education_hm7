@@ -2,6 +2,7 @@ package dao;
 
 import commons.JDBCCredentials;
 import entity.Company;
+import entity.Product;
 import generated.Tables;
 import generated.tables.records.CompanyRecord;
 import org.jetbrains.annotations.NotNull;
@@ -23,5 +24,16 @@ public class CompanyDAO {
             throw new RuntimeException(e);
         }
         throw new IllegalStateException("Company " + name + " is not exist");
+    }
+
+    public void saveCompany(@NotNull Company company) {
+        try (var connection = DriverManager.getConnection(CREDS.url(), CREDS.login(), CREDS.password())) {
+            var context = DSL.using(connection, SQLDialect.POSTGRES);
+            context.newRecord(Tables.COMPANY)
+                    .setName(company.getName())
+                    .store();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
