@@ -9,7 +9,6 @@
         </processorPath>
         <module name="homework7.application.main" />
         <module name="homework7.jooq_generated.main" />
-        <module name="homework7.jooq-generated.main" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="15" />
